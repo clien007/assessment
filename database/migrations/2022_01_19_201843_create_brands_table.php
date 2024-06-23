@@ -17,8 +17,8 @@ class CreateBrandsTable extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('brand_number')->unique();
             $table->string('color');
-            
             $table->timestamps();
         });
     }

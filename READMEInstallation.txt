@@ -1,0 +1,68 @@
+# Yum! Brands Dashboard
+
+This project is a Laravel-based internal dashboard for Yum! Brands, a fast food corporation with multiple brands like Taco Bell, Kentucky Fried Chicken, and Pizza Hut. Franchise owners can see data about their stores, switch contexts between brands, view financial details, and export data.
+
+## Features
+
+- View store data including brand, store number, address, total revenue, and total profit.
+- View historical financial details for each day in the last year.
+- Franchise owners can only see data about stores assigned to them.
+- Switch between different brands while remaining logged in.
+- Export financial data as CSV in a background job and receive an email with the link to the CSV file.
+- Easy visual identifier for the brand being viewed (color stripe, logo, etc.).
+
+## Requirements
+
+- PHP 7.4 or higher
+- Composer
+- Node.js and NPM
+- MySQL or any other supported database
+
+## Installation
+
+### Step 1: Install PHP Dependencies
+
+composer install
+
+### Step 2: Install Node Dependencies
+
+npm install
+
+### Step 3: Configure Environment Variables
+#### Copy the .env.example file to .env and configure your database and other settings:
+
+cp .env.example .env
+
+#### Open the .env file and update the following lines:
+
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+MAIL_MAILER=smtp
+MAIL_HOST=your_mail_host
+MAIL_PORT=your_mail_port
+MAIL_USERNAME=your_mail_username
+MAIL_PASSWORD=your_mail_password
+MAIL_ENCRYPTION=your_mail_encryption
+MAIL_FROM_ADDRESS=your_mail_from_address
+MAIL_FROM_NAME="${APP_NAME}"
+
+### Step 4: Generate Application Key
+
+php artisan key:generate
+
+### Step 5: Run Migrations and Seed Database
+
+php artisan migrate --seed
+
+### Step 6: Compile Assets
+
+npm run dev
+
+### Step 8: Serve the Application
+
+php artisan serve
+
+#### Visit http://localhost:8000 in your browser.
+
+

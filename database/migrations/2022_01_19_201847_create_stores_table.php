@@ -15,17 +15,13 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('brand_id');
-            $table->unsignedBigInteger('number');
+            $table->foreignId('brand_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->string('store_number')->unique();
             $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zip_code');
-
+            $table->decimal('total_revenue', 10, 2);
+            $table->decimal('total_profit', 10, 2);
             $table->timestamps();
-
-            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 
