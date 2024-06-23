@@ -12,17 +12,14 @@ class JournalFactory extends Factory
 
     public function definition()
     {
-        $store = Store::inRandomOrder()->first();
-        $revenue = $this->faker->numberBetween(1000, 10000); // Example revenue
-
-        // Calculate costs and profit based on revenue
-        $food_cost = $revenue * $this->faker->randomFloat(2, 0.1, 0.5);
-        $labor_cost = $revenue * $this->faker->randomFloat(2, 0.2, 0.6);
-        $profit = $revenue - $food_cost - $labor_cost;
+        $revenue = $this->faker->numberBetween(1000, 10000); 
+        $food_cost = $this->faker->numberBetween(200, 400);  
+        $labor_cost = $this->faker->numberBetween(200, 400); 
+        $profit = $revenue - ($food_cost + $labor_cost);   
 
         return [
-            'store_id' => $store->id,
-            'date' => $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d'),
+            'store_id' => Store::factory(),
+            'date' => $this->faker->dateTimeThisYear(),
             'revenue' => $revenue,
             'food_cost' => $food_cost,
             'labor_cost' => $labor_cost,
